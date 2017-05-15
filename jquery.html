@@ -1,0 +1,241 @@
+<html>
+    <!--  Page for sign up   -->
+    <head>
+        <title>Jquery</title>
+
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <!--Script for jquery-->
+
+        <script src="jscript/jquery.min.js"></script>
+        <!--script to import date type in mozzila firefox-->
+
+        <script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+        <!-- polyfiller file to detect and load polyfills -->
+        <script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>        
+        <script>
+            webshims.setOptions('waitReady', false);
+            webshims.setOptions('forms-ext', {types: 'date'});
+            webshims.polyfill('forms forms-ext');
+        </script>
+
+
+    </head>
+    <body>
+        <!--Header Part -->
+        <div class="header">
+
+            <!--logo comes here            -->
+            <div class="logo">
+                <a href="index.html"><img src="images/download.jpg" alt="Home" width="50" height="50" ></a>
+            </div>
+
+            <!-- Menu Bar            -->
+            <div class="menu">
+                <span> <a id="index" href="index.html">Home</a></span>
+                <span><a id="signup" href="Signup.html">Signup</a></span>
+                <span><a id="details" href="Details.html">Details</a></span>
+                <span> <a id="listing" href="listing.html">Listing</a></span>
+                <span> <a href="jquery.html">Jquery Form</a></span>
+                
+            </div>
+        </div> 
+        <div style="width: 100%"> 
+            <img class="td6" src="images/13.jpg" alt="Home on rent" />
+        </div> 
+
+        <h2>Enter the following details:</h2>
+
+        <div class="div4">
+            <form>
+                <fieldset class="fieldset1">
+                    <legend>Signup</legend>
+                    <!--Table for getting values from user -->
+                    <table>
+                        <tr>
+                            <td class="td3"><b>User Name</b> <span class="required">*</span> </td>
+                            <td class="td2">
+                                <input class="td2" id="username" type="text" name="username" />
+                                <span class="error" id="username_error"></span>
+                            </td>
+                            <td class="td3"><b> Password</b> <span class="required">*</span></td>
+                            <td>
+                                <input class="td2" id="password" type="password" name="password"/>
+                                <span class="error" id="password_error"></span>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="td5"> <b>First Name</b> <span class="required">*</span></td>
+                            <td>
+
+                                <input class="td2" id="firstname" type="text" name="firstname"/>
+                                <span class="error" id="firstname_error"></span>
+                            </td>
+                            <td class="td5"><b>Last Name</b> <span class="required">*</span> </td>
+                            <td>
+                                <input class="td2" id="lastname" type="text" name="lastname"/>
+                                <span class="error" id="lastname_error"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td5"><b> Email</b> <span class="required">*</span></td>
+                            <td>
+                                <input class="td2" type="text" id="email">
+                                <span class="error" id="email_error"></span>
+                            </td>
+                            <td class="td5"><b>Gender</b> <span class="required">*</span> </td>
+                            <td class="td5" >
+                                <input  id="radio1" type="radio" name="gender" value="male" >Male
+                                <input  id="radio2" type="radio" name="gender" value="female">Female
+                                <br> <span class="error" id="gender_error"></span>
+                            </td>
+
+
+
+                        </tr>
+                        <tr>
+                            <td class="td5"><b> Address</b> <span class="required">*</span></td>
+                            <td>
+                                <textarea id="textarea" rows="4" cols="25">
+
+                                </textarea>
+                                <span class="error" id="textarea_error"></span>
+                            </td>
+                            <td class="td5"><b> Location</b> <span class="required">*</span></td>
+                            <td>
+                                <div>
+                                    <div >
+                                        <select id="state" onchange="Dropdown()" >
+                                            <option value="">City</option> 
+                                            <option value="Rajasthan">Jaipur</option> 
+                                            <option value="Mp">Jodhpur</option> 
+                                            <option value="Up">Bikaner</option> 
+
+                                        </select>
+                                    </div>
+
+                                    <br> <span class="error" id="location_error"></span>
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td5"><b> DOB</b> <span class="required">* </span></td>
+                            <td>
+                                <div >
+                                    <input id="date" type="date">
+                                </div>
+                                <div style="margin-top: -22px;margin-left: 158px">
+                                    <img src="images/cal.jpg" style="max-width: 20px;max-height: 20px;">
+
+                                </div>
+                                <br><span class="error" id="date_error"></span>
+
+                            </td>
+                            <td class="td5">
+                                <b>  Hobbies </b><span class="required">* </span>
+                            </td>
+                            <td class="td5">
+                                <input  type="checkbox" id="java" name="java"/>Java
+                                <input type="checkbox" id="android" name="Android">Android
+                                <br> <span class="error" id="hobbies_error"></span>
+                            </td>
+                        </tr>
+                        <tr>
+
+
+                            <td colspan="4">
+
+                                <!--Submit Button with Action on click event -->
+
+                                <input id="submit" type="submit" value="submit" class="b1"/>
+
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </fieldset>
+            </form>        
+        </div>
+
+        <!--Script part-->
+
+        <script>
+//script for validation on submit button
+
+            $(document).ready(function () {
+                $("#submit").click(function ()
+                {
+                    $('.error').text('');
+                    var username = $("#username").val();
+                    var firstname = $("#firstname").val();
+                    var password = $("#password").val();
+                    var lastname = $("#lastname").val();
+                    var email = $("#email").val();
+                    var textarea = $("#textarea").val();
+                    var gender = $("#gender").val();
+                    var location = $("#location").val();
+                    var date = $("#date").val();
+                    var hobbies = $("#hobbies").val();
+                    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                    counter = 0;
+                    var isChecked = jQuery("input[name=gender]:checked").val();
+                    var checkBoxValidation1 = jQuery("input[type='checkbox']:checked").each(function () {
+                        counter++;
+                    });
+//                        var checkBoxValidation2 = jQuery("input[id=android]:checked").val();
+                    stateValidation = jQuery('#state').val();
+                    console.log(stateValidation);
+                    if (counter == 0)
+                    {
+                        $("#hobbies_error").html("Please select atleast one hobby.");
+                    }
+                    if (stateValidation === undefined || stateValidation == '') {
+                        $('#location_error').text('Please Select City.');
+                    }
+
+                    if (!isChecked)
+                    {
+                        $("#gender_error").html("Gender can not be blank.");
+                    }
+
+                    if (username === '')
+                    {
+
+                        $("#username_error").html("Username can not be blank.");
+                    }
+                    if (password === '')
+                    {
+                        $("#password_error").html("Password can not be blank.");
+                    }
+                    if (firstname === '')
+                    {
+                        $("#firstname_error").html("First Name can not be blank.");
+                    }
+                    if (lastname === '')
+                    {
+                        $("#lastname_error").html("Last Name can not be blank.");
+                    }
+                    if ((!re.test(email)))
+                    {
+                        $("#email_error").html("Email is invalid, eg abc@xyz.com!!");
+                    }
+                    if (textarea.trim() === '')
+                    {
+                        $("#textarea_error").html("Address can not be blank.");
+                    }
+                    if (date === '')
+                    {
+                        $("#date_error").html("Date can not be blank.");
+                    }
+
+                    return false;
+
+                });
+            });
+        </script>
+    </body>
+</html> 

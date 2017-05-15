@@ -1,0 +1,289 @@
+<html>
+    <!--  Page for sign up   -->
+    <head>
+        <title>Sign up</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+<!--Script for jQuery         -->
+        <script src="jscript/jquery.min.js"></script>
+        
+ <!--script to import date type in mozzila firefox-->
+
+        <script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+        <!-- polyfiller file to detect and load polyfills -->
+        <script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>        
+        <script>
+            webshims.setOptions('waitReady', false);
+            webshims.setOptions('forms-ext', {types: 'date'});
+            webshims.polyfill('forms forms-ext');
+        </script>
+        
+    </head>
+    <body>
+        <!--Header Part -->
+        <div class="header">
+            
+            <!--logo comes here            -->
+            <div class="logo">
+                <a href="index.html"><img src="images/download.jpg" alt="Home" width="50" height="50" ></a>
+            </div>
+            
+            <!-- Menu Bar            -->
+            <div class="menu">
+                <span> <a id="index" href="index.html">Home</a></span>
+                <span><a id="signup" href="Signup.html">Signup</a></span>
+                <span><a id="details" href="Details.html">Details</a></span>
+                <span> <a id="listing" href="listing.html">Listing</a></span>
+                <span> <a href="jquery.html">Jquery Form</a></span>
+            </div>
+        </div> 
+        <div style="width: 100%"> 
+            <img class="td6" src="images/13.jpg" alt="Home on rent" />
+        </div> 
+        
+        <h2>Enter the following details:</h2>
+
+        <div class="div4">
+            <form>
+            <fieldset class="fieldset1">
+                <legend>Signup</legend>
+                <!--Table for getting values from user -->
+                <table>
+                    <tr>
+                        <td class="td3"><b>User Name</b> <span class="required">*</span> </td>
+                        <td class="td2">
+                            <input class="td2" id="username" type="text" name="username" />
+                        </td>
+                        <td class="td3"><b> Password</b> <span class="required">*</span></td>
+                        <td>
+                            <input class="td2" id="password" type="password" name="password"/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="td5"> <b>First Name</b> <span class="required">*</span></td>
+                        <td>
+
+                            <input class="td2" id="firstname" type="text" name="firstname"/>
+                        </td>
+                        <td class="td5"><b>Last Name<b> <span class="required">*</span> </td>
+                                    <td>
+                                        <input class="td2" id="lastname" type="text" name="lastname"/>
+                                    </td>
+                                    </tr>
+                    <tr>
+                        <td class="td5"><b> Email</b> <span class="required">*</span></td>
+                        <td>
+                            <input class="td2" type="text" id="email">
+                        </td>
+                        <td class="td5"><b>Gender</b> <span class="required">*</span> </td>
+                        <td class="td5" >
+                            <input  id="radio1" type="radio" name="gender" value="male" >Male
+                            <input  id="radio2" type="radio" name="gender" value="female">Female
+                        </td>
+
+
+
+                    </tr>
+                    <tr>
+                        <td class="td5"><b> Address</b> <span class="required">*</span></td>
+                        <td>
+                            <textarea id="textarea" rows="4" cols="25">
+
+                            </textarea>
+                        </td>
+                        <td class="td5"><b> Location</b> <span class="required">*</span></td>
+                        <td>
+                            <div>
+                                <div style="float: left">
+                                    <select id="state" onchange="Dropdown()" >
+                                        <option value="">State</option> 
+                                        <option value="Rajasthan">Rajasthan</option> 
+                                        <option value="Mp">Mp</option> 
+                                        <option value="Up">Up</option> 
+
+                                    </select>
+                                </div>
+
+                                <div style="float: left">
+                                    <select id="city" > 
+                                        <option value="">City</option> 
+                                    </select>
+
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td5"><b> DOB</b> <span class="required">* </span></td>
+                        <td>
+                            <div >
+                                <input id="date" type="date">
+                            </div>
+                            <div style="margin-top: -22px;margin-left: 158px">
+                                <img src="images/cal.jpg" style="max-width: 20px;max-height: 20px;">
+                            </div>
+
+                        </td>
+                        <td class="td5">
+                            <b>  Hobbies </b><span class="required">* </span>
+                        </td>
+                        <td class="td5">
+                            <input  type="checkbox" id="java" name="java"/>Java
+                            <input type="checkbox" id="android" name="Android">Android
+                        </td>
+                   
+                    </tr>
+                         <tr>
+                        <td class="td5" >
+                            <b>Upload</b>
+                        </td>
+                        <td colspan="3">
+                             <input type="file" name="pic" accept="image/*">
+                        </td>
+                    </tr
+                    
+                    <tr>
+                        <td colspan="4">
+
+                            <!--Submit Button with Action on click event -->
+
+                            <input type="submit" value="submit" onclick="submitaction()" class="b1"/>
+
+
+                        </td>
+
+                    </tr>
+
+                </table>
+                
+            </fieldset>
+          </form>        
+        </div>
+
+        <!--Script part-->
+
+        <script type="text/javascript">
+
+            //state and city combination for dpendent select box
+
+            var statecity = {};
+            statecity['Rajasthan'] = ['--select--', 'Jaipur', 'Jodhpur', 'Ajmer'];
+            statecity['Mp'] = ['--select--', 'Indore', 'Gwaliar', 'Jabalpur'];
+            statecity['Up'] = ['--select--', 'Kanpur', 'Agra'];
+            //dropdown function for dependent select box state
+            function Dropdown()
+            {
+                var state = document.getElementById("state");
+                var city = document.getElementById("city");
+                var selectstate = state.options[state.selectedIndex].value;
+
+                while (city.options.length)
+                {
+                    city.remove(0);
+                }
+
+                var cities = statecity [selectstate];
+                if (cities) {
+                    var i;
+                    for (i = 0; i < cities.length; i++)
+                    {
+                        var cityy = new Option(cities[i], i);
+                        city.options.add(cityy);
+                    }
+                }
+            }
+
+            //submit action function for validation on fields 
+            function submitaction()
+            {
+                var firstname = document.getElementById("firstname");
+                var lastname = document.getElementById("lastname");
+                var username = document.getElementById("username");
+                var password = document.getElementById("password");
+                var male = document.getElementById("radio1");
+                var female = document.getElementById("radio2");
+                var textarea = document.getElementById("textarea");
+                var date = document.getElementById("date");
+                var email = document.getElementById("email");
+                var java = document.getElementById("java");
+
+
+                var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                var radiobutton = 0;
+                var checkbox = 0;
+                if (document.getElementById('java').checked)
+                    checkbox = 1;
+                if (document.getElementById('android').checked)
+                    checkbox = 1;
+                if (male.checked)
+                    radiobutton = 1;
+                if (female.checked)
+                    radiobutton = 1;
+                if (username.value === '')
+                {
+                    alert("Please provide User name");
+                    return false;
+                }
+                else if (password.value === '')
+                {
+                    alert("Please provide valid Password");
+                    return false;
+                }
+                else if (firstname.value === '')
+                {
+                    alert("Please provide First Name");
+                    return false;
+                }
+                else if (lastname.value === '')
+                {
+                    alert("Please provide Last Name");
+                    return false;
+                }
+                else if (!re.test(email.value)) {
+                    alert('Email is invalid, Provide correct Email eg. abc@xyz.com');
+                    return false;
+                }
+
+                else if (radiobutton === 0)
+                {
+                    alert("Please select Gender");
+                    return false;
+                }
+                else if (textarea.value.trim()  === '')
+                {
+                    alert("Please provide Address");
+                    return false;
+                }
+
+                else if (state.value === '')
+                {
+                    alert("Please select a State");
+                }
+                else if (date.value === '')
+                {
+                    alert("Please provide DOB")
+                }
+                else if (checkbox === 0)
+                {
+                    alert("Please select Hobbies");
+                    return false;
+                }
+
+
+
+
+                else {
+                    alert("Form successfully submitted");
+                    firstname.value = '';
+                    lastname.value = '';
+                    username.value = '';
+                    password.value = '';
+                    email.value = '';
+                    textarea.value = '';
+
+                }
+            }
+        </script>
+    </body>
+</html> 
