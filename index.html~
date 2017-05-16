@@ -15,8 +15,8 @@
             <!-- Menu Bar            -->
             <div class="menu">
 
-                <span> <a id="signu" href="Signup.html">HTML 1</a></span>
-                <span><a id="login" href="login.php">PHP 2</a></span>
+                <span> <a id="signu" href="Signup.html">HTML</a></span>
+                <span><a id="login" href="login.php">PHP</a></span>
                 
 
             </div>
